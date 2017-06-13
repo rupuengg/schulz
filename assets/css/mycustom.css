@@ -1,0 +1,250 @@
+.myCustomGridHeading{
+    font-size: 21px;
+    padding-top: 2px;
+}
+
+.my-select{
+    width:100%;
+    padding:7px;
+}
+.upload_hover{ 
+    background: rgba(31, 31, 31, 0.81);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 12px;
+    right: 0;
+    color: white;
+    text-align: center;
+    padding: 110px 0 0 0;
+    font-size: 22px;
+    cursor: pointer;
+    height: 195px;
+    width: 212px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+.width-custom-lg{
+    width:670px
+}
+
+.mycard-body {
+    /*padding: 30px;*/
+    position: relative;
+}
+.img-custom-size{
+    height: 195px;
+    width: 212px;
+}
+.custom-text-warning{
+    color:#FFFF00;
+}
+
+
+.blink {
+    -webkit-animation: blink .75s linear infinite;
+    -moz-animation: blink .75s linear infinite;
+    -ms-animation: blink .75s linear infinite;
+    -o-animation: blink .75s linear infinite;
+    animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.logonamecentr{
+    margin-left: 35px;
+}
+
+
+.chkboxsml .checkbox-styled:not(ie8) input ~ span::before, .radio-styled:not(ie8) input ~ span::before{
+
+    width: 14px!important;
+    height: 14px!important;
+    top: 4px!important;
+}
+.viewlink{
+    padding-left: 130px;
+    font-size: 16px;
+}
+.closeicon{
+    display: table!important;
+    width: 35px!important;
+    min-width: 35px!important;
+    line-height: 2.8;
+}
+
+.tile.ng-scope , .bullet{
+    list-style: none;
+    border-bottom: 9px solid #fff;
+}
+
+.list .tile .checkbox-styled:not(ie8) input ~ span {
+    padding-left: 30px!important;
+}
+.lessspace{
+    padding: 10px 3px!important;
+    white-space: nowrap;
+}
+.lessspace1{
+    padding: 5px 0px 5px  6px!important;
+    white-space: nowrap;
+}
+input[type=checkbox]:checked + .strikethrough{
+    text-decoration: line-through;
+}
+/* @end */
+
+/* lateattdance mudle css start */
+.btn-late-attd .form-control.text-center.ng-pristine.ng-untouched.ng-valid.ng-valid-maxlength {
+    width: 46px;
+}
+
+.btn-late-attd .form-control.text-center.ng-pristine.ng-valid.ng-valid-maxlength.ng-touched {
+    width: 40px;
+}
+
+.btn-late-attd .uib-increment{
+
+    margin:0px!important;
+    padding:0px!important;
+}
+
+.btn-late-attd .uib-increment a{
+
+    margin:0px!important;
+    padding:0px!important;
+}
+
+.btn-late-attd .uib-time{
+
+    margin:0px!important;
+    padding:0px!important;
+}
+
+.btn-late-attd .uib-time .form-control{
+
+    border:0px!important;
+}
+
+.btn-late-attd .uib-decrement{
+
+    margin:0px!important;
+    padding:0px!important;
+}
+.btn-late-attd .uib-decrement a{
+
+    margin:0px!important;
+    padding:0px!important;
+}
+
+.btn-late-attd .time.uib-timepicker.ng-isolate-scope.ng-valid.ng-valid-time{
+    margin-top:-25px;
+}
+/* lateattdance mudle css end */
+
+/************************* new css(for redmi bug)nitin**************** */
+
+.heavyfont{
+    font-weight: bold;
+}
+
+.myalert .alert-callout.alert-warning::before {
+    background: #FFFF00;
+}
+
+.dl-align .dl-horizontal dt{
+    float: left!important;
+    text-align: left!important;
+    margin-left: 120px!important;
+    width: 100px!important;
+}
+
+.btn-yellow-warning{
+    background-color: #ffff00!important;
+}
+
+.card-body .btn{
+    cursor:auto!important;
+}
+
+
+
+.textalign  .dl-horizontal dd{
+    margin-left: 100px!important;   
+}
+
+@media only screen and (min-width: 768px) {
+    .textalign .dl-horizontal dt{
+        text-align: left!important;
+    }
+}
+
+.myNewClass  .dl-horizontal dd{
+    margin-left: 100px!important;   
+}
+
+@media only screen and (min-width: 768px) {
+    .myNewClass .dl-horizontal dt{
+        text-align: left!important;
+        width: auto!important;
+    }
+}
+
+.myNewClass  .dl-horizontal{
+    padding-left:40px!important;
+}
+
+.radio-styled:not(ie8) input:checked ~ span::after {
+    left: 2px!important;
+    top: 6px!important;
+}
+/***************************** 30 nov****************************************/
+.margin-50{
+    margin-left:50px;
+}
+.h1-blue{
+    color:#0aa89e
+}
+
+/***************************** 1 dec****************************************/
+.leftaligncustom dd{
+    text-align: left !important;
+ }
+
+ .myscroll{
+     overflow-y:auto;
+ }
+ .ml30{
+    margin-left:30px; 
+ }
+ 
+
