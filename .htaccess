@@ -1,6 +1,8 @@
-Header add Access-Control-Allow-Origin "*"
-Header add Access-Control-Allow-Methods: "GET,POST"
-# RewriteEngine on
+<IfModule mod_headers.c>
+	Header add Access-Control-Allow-Origin "*"
+	Header add Access-Control-Allow-Methods: "GET,POST"
+</IfModule>
+
+#RewriteEngine on
 #RewriteCond %{HTTP_HOST} ^skoolapp.in/myschool [NC]
 #RewriteRule ^(.*)$ http://www.skoolapp.in/myschool/$1 [L,R=301,NC]
-
