@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * CodeIgniter
+	* CodeIgniter
  *
  * An open source application development framework for PHP 5.1.6 or newer
  *
@@ -302,6 +302,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	function escape_str($str, $like = FALSE)
 	{
+	// echo $str;die;
 		if (is_array($str))
 		{
 			foreach ($str as $key => $val)
@@ -312,8 +313,14 @@ class CI_DB_mysqli_driver extends CI_DB {
 			return $str;
 		}
 
-
-		$str = mysqli_real_escape_string($this->conn_id, $str);
+		if (function_exists('mysqli_real_escape_string') AND is_object($this->conn_id))
+		{
+			$str = mysqli_real_escape_string($this->conn_id, $str);
+		}
+		else
+		{
+			$str = addslashes($str);
+		}
 
 		// escape LIKE condition wildcards
 		if ($like === TRUE)

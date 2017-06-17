@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.7
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 16, 2016 at 03:20 PM
--- Server version: 5.5.42-cll
--- PHP Version: 5.4.41
+-- Generation Time: Jun 17, 2017 at 12:37 PM
+-- Server version: 5.5.47-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `skoolapp_merascho_web_users`
+-- Database: `merascho_web_users`
 --
 
 -- --------------------------------------------------------
@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `acr_activity_master_list` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `activity_name` varchar(255) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `acr_activity_master_list`
@@ -64,11 +65,12 @@ INSERT INTO `acr_activity_master_list` (`id`, `activity_name`, `entry_by`, `time
 --
 
 CREATE TABLE IF NOT EXISTS `acr_designation` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `designation_name` varchar(200) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `acr_designation`
@@ -1306,7 +1308,9 @@ INSERT INTO `app_access_keys_details` (`id`, `device_id`, `user_id`, `access_key
 (0, '911498057943486', 3, 'POJSY61ZJZQOAM7KC3W4ZR56GD438W6MBG5ZDXPMK51LHZXKSIFH0AE6E9ZCXXQY', 'CREATED', 3, '2016-07-15 07:57:39'),
 (0, '860933030981857', 268, '90ADY54KXO36P5LIXSK6S0Z79HHXAY7AP7DC38MPMGL1CWAYFKVWAKVAS3WTSVT6', 'CREATED', 268, '2016-07-18 12:23:43'),
 (0, '867935024394966', 247, 'JL0S4L3JBMP4R4BOYXLSEU8F2C1WWAB7M1PGCIQDV58C0AQOW151L46D7Y1VZ2SB', 'CREATED', 247, '2016-07-21 04:41:37'),
-(0, '911498057943486', 801, '8SORH3AIT87EMRMEZ8GA0O2RMO30WK1X3ECA8DIRCGVPW8TM7ZOWDFDQT7FGI72B', 'CREATED', 801, '2016-08-02 10:12:36');
+(0, '911498057943486', 801, '8SORH3AIT87EMRMEZ8GA0O2RMO30WK1X3ECA8DIRCGVPW8TM7ZOWDFDQT7FGI72B', 'CREATED', 801, '2016-08-02 10:12:36'),
+(0, '353380071356165', 1, 'FG0P9OJECOQWLLMH2FSIZ0JHRS5S0AQ5GGKFUVKW80JJCWS529ES0O0H6VZXVFS2', 'CREATED', 1, '2017-02-03 13:04:02'),
+(782, '353380071356165', 1, 'FG0P9OJECOQWLLMH2FSIZ0JHRS5S0AQ5GGKFUVKW80JJCWS529ES0O0H6VZXVFS2', 'CREATED', 1, '2017-02-03 13:04:27');
 
 -- --------------------------------------------------------
 
@@ -1315,7 +1319,7 @@ INSERT INTO `app_access_keys_details` (`id`, `device_id`, `user_id`, `access_key
 --
 
 CREATE TABLE IF NOT EXISTS `app_device_list` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `device_name` varchar(255) NOT NULL,
   `device_company` varchar(1000) NOT NULL,
   `device_platform` varchar(255) NOT NULL,
@@ -1324,8 +1328,9 @@ CREATE TABLE IF NOT EXISTS `app_device_list` (
   `device_width` varchar(20) NOT NULL,
   `device_height` varchar(20) NOT NULL,
   `device_colordepth` varchar(20) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `app_device_list`
@@ -1366,39 +1371,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`, `timestamp`) VALUES
-('ab31c5cb87f687fcdc571b560b8b05f8', '111.93.33.242', 'SkoolApplication/1.0 (iPhone; iOS 9.3; Scale/2.00)', 1471340986, '', '2016-08-16 09:49:46'),
-('40196aa7561200d635410b6ff22576ed', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333933, '', '2016-08-16 07:52:13'),
-('c5543c9d200b57c0b6ef9a7870f498fb', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333934, '', '2016-08-16 07:52:14'),
-('e3a74e3fe035bd5b9ce353dd81cb41f5', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333934, '', '2016-08-16 07:52:14'),
-('916c60313571abcbb14c55f27667766f', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333935, '', '2016-08-16 07:52:15'),
-('6ec748ea22778e629f3de67c178428a5', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333936, '', '2016-08-16 07:52:16'),
-('97665a977a3895afbdfe2199bf8b297c', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333936, '', '2016-08-16 07:52:16'),
-('7e33bbc28794aebfbd3da33d4032d7cf', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333937, '', '2016-08-16 07:52:17'),
-('6221c8bea6d60aadb6720dca20883fe1', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471333938, '', '2016-08-16 07:52:18'),
-('9cad5c84454844b3f27b057f7cd58470', '111.93.33.242', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 1471340023, 'a:16:{s:9:"user_data";s:0:"";s:9:"logintype";s:5:"STAFF";s:7:"user_id";s:1:"1";s:8:"database";s:64:"mysqli://skoolapp_root:saga@123@localhost/skoolapp_merascho_demo";s:12:"deo_staff_id";i:-1;s:14:"deo_staff_name";s:2:"NA";s:8:"staff_id";s:1:"1";s:10:"staff_name";s:13:"Gaurav Rupani";s:11:"staff_desig";s:5:"ADMIN";s:11:"school_code";s:7:"TESTDB1";s:10:"brand_name";s:8:"skoolapp";s:10:"brand_logo";s:15:"files/myapp.png";s:21:"is_staff_classteacher";s:3:"YES";s:29:"staff_classteacher_section_id";s:2:"30";s:24:"staff_classteacher_class";s:3:"11B";s:9:"staffMenu";a:10:{i:0;a:4:{s:6:"menuid";s:1:"6";s:8:"menuname";s:9:"Dashboard";s:5:"class";s:7:"md-home";s:11:"childDetail";a:2:{i:0;a:12:{s:7:"childid";s:2:"38";s:12:"childcaption";s:5:"ADMIN";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"6";s:8:"page_url";s:30:"index.php/staff/admindashboard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-21 10:19:13";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"39";s:12:"childcaption";s:9:"Dashboard";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"6";s:8:"page_url";s:30:"index.php/staff/staffdashboard";s:9:"mandatory";s:0:"";s:7:"default";s:3:"YES";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-21 10:19:20";s:8:"selected";b:1;}}}i:1;a:4:{s:6:"menuid";s:1:"1";s:8:"menuname";s:7:"General";s:5:"class";s:9:"md-school";s:11:"childDetail";a:4:{i:0;a:12:{s:7:"childid";s:2:"14";s:12:"childcaption";s:18:"Attendance summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:28:"index.php/staff/attsummary\r\n";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 15:50:37";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"15";s:12:"childcaption";s:13:"Marks Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:25:"index.php/staff/bluesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:26:41";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"16";s:12:"childcaption";s:14:"Common Notices";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:28:"index.php/staff/noticemodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:27:07";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"17";s:12:"childcaption";s:15:"Today''s summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}}}i:2;a:4:{s:6:"menuid";s:1:"2";s:8:"menuname";s:9:"Academics";s:5:"class";s:7:"md-poll";s:11:"childDetail";a:9:{i:0;a:12:{s:7:"childid";s:2:"18";s:12:"childcaption";s:9:"My Events";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:24:"index.php/staff/myevents";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 18:30:29";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"19";s:12:"childcaption";s:11:"Marks entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:26:"index.php/staff/marksentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 16:36:53";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"20";s:12:"childcaption";s:18:"Student CR Remarks";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:30:"index.php/staff/remarkentrysub";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-03-28 15:20:01";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"21";s:12:"childcaption";s:15:"CCE Grade entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:29:"index.php/staff/ccegradeentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:54:05";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"23";s:12:"childcaption";s:11:"Cards entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:30:"index.php/staff/staffdashboard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-06-30 18:16:07";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"24";s:12:"childcaption";s:13:"Manage Events";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:27:"index.php/staff/manageevent";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 18:30:42";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"25";s:12:"childcaption";s:22:"Validate Class and CEE";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:28:"index.php/staff/gradesummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:23:54";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"44";s:12:"childcaption";s:22:"Send Message to Parent";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:34:"index.php/staff/staffparentmessage";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 14:23:29";s:8:"selected";b:0;}i:8;a:12:{s:7:"childid";s:2:"46";s:12:"childcaption";s:8:"My clubs";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:25:"index.php/staff/addmember";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-03 13:30:59";s:8:"selected";b:1;}}}i:3;a:4:{s:6:"menuid";s:2:"23";s:8:"menuname";s:18:"Library Management";s:5:"class";s:9:"md-school";s:11:"childDetail";a:10:{i:0;a:12:{s:7:"childid";s:2:"52";s:12:"childcaption";s:11:"Books Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:24:"index.php/staff/addbooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 17:58:29";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"53";s:12:"childcaption";s:11:"Issue Books";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:26:"index.php/staff/issuebooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 17:59:46";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"54";s:12:"childcaption";s:12:"Return Books";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:27:"index.php/staff/returnbooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:00:05";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"55";s:12:"childcaption";s:12:"Fine Setting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:27:"index.php/staff/finesetting";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:00:44";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"56";s:12:"childcaption";s:18:"Issued Book Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:31:"index.php/staff/issuebookreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:04:50";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"57";s:12:"childcaption";s:16:"Defaulter Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:31:"index.php/staff/defaulterreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:06:13";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"58";s:12:"childcaption";s:16:"Lost Book Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:30:"index.php/staff/lostbookreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:06:49";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"59";s:12:"childcaption";s:19:"Book Centric Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:33:"index.php/staff/bookcentricreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:07:33";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"60";s:12:"childcaption";s:22:"Student Centric Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:36:"index.php/staff/studentcentricreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:08:06";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"61";s:12:"childcaption";s:22:"Fine Collection Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:30:"index.php/staff/finecollection";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:08:43";s:8:"selected";b:1;}}}i:4;a:4:{s:6:"menuid";s:2:"24";s:8:"menuname";s:13:"Transport MGT";s:5:"class";s:17:"md-directions-bus";s:11:"childDetail";a:8:{i:0;a:12:{s:7:"childid";s:2:"62";s:12:"childcaption";s:9:"Bus Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:25:"index.php/staff/busmodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:12:24";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"63";s:12:"childcaption";s:8:"Bus Stop";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:23:"index.php/staff/busstop";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:15:52";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"64";s:12:"childcaption";s:12:"Driver Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:28:"index.php/staff/drivermodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:16:30";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"65";s:12:"childcaption";s:15:"Manage Bus Trip";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:29:"index.php/staff/managebustrip";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:17:28";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"66";s:12:"childcaption";s:17:"Manage Bus Driver";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:31:"index.php/staff/managebusdriver";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:18:11";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"67";s:12:"childcaption";s:18:"Manage Student-Bus";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:32:"index.php/staff/managestudentbus";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:19:20";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"68";s:12:"childcaption";s:17:"Transport Reports";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:30:"index.php/staff/generatereport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:20:09";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"69";s:12:"childcaption";s:14:"Bus Contractor";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:27:"index.php/staff/buscontract";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:38:21";s:8:"selected";b:1;}}}i:5;a:4:{s:6:"menuid";s:2:"25";s:8:"menuname";s:14:"Time Table MGT";s:5:"class";s:16:"md-query-builder";s:11:"childDetail";a:5:{i:0;a:12:{s:7:"childid";s:2:"70";s:12:"childcaption";s:14:"Manage Periods";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:28:"index.php/staff/manageperiod";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:44:24";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"71";s:12:"childcaption";s:21:"Class Wise Time Table";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:34:"index.php/staff/classwisetimetable";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:45:13";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"72";s:12:"childcaption";s:21:"Substitute Time Table";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:35:"index.php/staff/substitutetimetable";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:45:52";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"73";s:12:"childcaption";s:22:"Working Hours Settings";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:28:"index.php/staff/workinghours";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:46:29";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"74";s:12:"childcaption";s:19:"Group Wise Settings";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:33:"index.php/staff/groupwisesettings";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:47:06";s:8:"selected";b:1;}}}i:6;a:4:{s:6:"menuid";s:2:"26";s:8:"menuname";s:9:"Fees Mgmt";s:5:"class";s:15:"md-attach-money";s:11:"childDetail";a:5:{i:0;a:12:{s:7:"childid";s:2:"79";s:12:"childcaption";s:12:"Head Setting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:27:"index.php/staff/headsetting";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:31:36";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"80";s:12:"childcaption";s:21:"Classwise Headsetting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:24:"index.php/staff/classrel";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:32:18";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"81";s:12:"childcaption";s:19:"Installment Session";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:31:"index.php/staff/feesinstallment";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:32:58";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"82";s:12:"childcaption";s:13:"Fees Latefine";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:24:"index.php/staff/latefine";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:37:11";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"83";s:12:"childcaption";s:10:"Fees entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:32:"index.php/staff/studentfeesentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:37:40";s:8:"selected";b:1;}}}i:7;a:4:{s:6:"menuid";s:1:"3";s:8:"menuname";s:7:"Reports";s:5:"class";s:9:"md-report";s:11:"childDetail";a:11:{i:0;a:12:{s:7:"childid";s:2:"22";s:12:"childcaption";s:18:"Attendance Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:26:"index.php/staff/attsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 17:15:07";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"27";s:12:"childcaption";s:21:"Notes or Text parents";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:34:"index.php/staff/staffparentmessage";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-04-08 13:07:15";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"30";s:12:"childcaption";s:13:"Staff Profile";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"31";s:12:"childcaption";s:15:"Student Profile";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"37";s:12:"childcaption";s:17:"CCE Grade Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:28:"index.php/staff/gradesummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:46:22";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"47";s:12:"childcaption";s:12:"House Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:27:"index.php/staff/housereport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:48:15";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"48";s:12:"childcaption";s:19:"Late Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:33:"index.php/staff/latestudentreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:49:47";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"49";s:12:"childcaption";s:21:"Absent Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:35:"index.php/staff/absentstudentreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:51:23";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"50";s:12:"childcaption";s:17:"Class List Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:31:"index.php/staff/classlistreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:52:43";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"51";s:12:"childcaption";s:16:"Card List Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:30:"index.php/staff/cardlistreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:53:34";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"85";s:12:"childcaption";s:14:"Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:30:"index.php/staff/studentsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-22 10:42:32";s:8:"selected";b:1;}}}i:8;a:4:{s:6:"menuid";s:1:"4";s:8:"menuname";s:9:"What else";s:5:"class";s:9:"md-public";s:11:"childDetail";a:14:{i:0;a:12:{s:7:"childid";s:2:"26";s:12:"childcaption";s:8:"Send SMS";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/smsmodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 13:00:42";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"28";s:12:"childcaption";s:13:"School Notice";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:28:"index.php/staff/noticemodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 16:22:53";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"29";s:12:"childcaption";s:13:"Home Work MGT";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:24:"index.php/staff/homework";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-01-28 18:30:20";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"32";s:12:"childcaption";s:16:"Attendance Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:32:"index.php/staff/manageattendence";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 17:14:10";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"33";s:12:"childcaption";s:18:"Student SQL Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/sqlreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-19 13:32:32";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"34";s:12:"childcaption";s:15:"Homework Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"35";s:12:"childcaption";s:9:"Bluesheet";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/bluesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:31:19";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"42";s:12:"childcaption";s:24:"Student Login Generation";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:28:"index.php/staff/genstudlogin";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:30:15";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"43";s:12:"childcaption";s:24:"Teacher login Generation";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:29:"index.php/staff/genstafflogin";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:30:45";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"75";s:12:"childcaption";s:15:"Late attendance";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:30:"index.php/staff/lateattendance";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 10:45:27";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"76";s:12:"childcaption";s:23:"Declare Exam Date Sheet";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:29:"index.php/staff/examdatesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 12:10:18";s:8:"selected";b:1;}i:11;a:12:{s:7:"childid";s:2:"77";s:12:"childcaption";s:11:"Report Card";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:26:"index.php/staff/reportcard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-05-05 18:49:53";s:8:"selected";b:1;}i:12;a:12:{s:7:"childid";s:2:"78";s:12:"childcaption";s:16:"Staff Attendance";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:24:"index.php/staff/staffatt";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-05-07 17:09:28";s:8:"selected";b:1;}i:13;a:12:{s:7:"childid";s:2:"84";s:12:"childcaption";s:17:"Id card genration";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:22:"index.php/staff/idcard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-18 13:01:52";s:8:"selected";b:1;}}}i:9;a:4:{s:6:"menuid";s:1:"5";s:8:"menuname";s:15:"Master Settings";s:5:"class";s:11:"md-keyboard";s:11:"childDetail";a:16:{i:0;a:12:{s:7:"childid";s:1:"1";s:12:"childcaption";s:18:"Student Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/studentsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-29 18:49:51";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:1:"2";s:12:"childcaption";s:16:"Class Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/managesection";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-22 12:41:49";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:1:"3";s:12:"childcaption";s:18:"Subject Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/managesubject";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:16:55";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:1:"4";s:12:"childcaption";s:24:"Subject Combo Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/managecombourl";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:20:10";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:1:"5";s:12:"childcaption";s:15:"CCE List Master";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:23:"index.php/staff/ccelist";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:18:27";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:1:"6";s:12:"childcaption";s:47:"Declare exams (master FA,SA ,UT, Mid term etc.)";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:28:"index.php/staff/decalareexam";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 16:49:34";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:1:"7";s:12:"childcaption";s:23:"Publish and Lock Marks ";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:28:"index.php/staff/publishmarks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 14:17:43";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"40";s:12:"childcaption";s:21:"Holiday- Session days";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/holidayterm";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:27:36";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:1:"9";s:12:"childcaption";s:18:"Holiday Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/manageholiday";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:21:23";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"10";s:12:"childcaption";s:16:"Staff Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/managestaff";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-07 14:33:39";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"11";s:12:"childcaption";s:25:" Class teacher assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:34:"index.php/staff/manageclassteacher";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:17:14";s:8:"selected";b:1;}i:11;a:12:{s:7:"childid";s:2:"12";s:12:"childcaption";s:22:"CCE teacher Assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:32:"index.php/staff/assigncceelement";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:19:17";s:8:"selected";b:1;}i:12;a:12:{s:7:"childid";s:2:"13";s:12:"childcaption";s:26:"Subject teacher assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/subjectteacher";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:18:11";s:8:"selected";b:1;}i:13;a:12:{s:7:"childid";s:2:"36";s:12:"childcaption";s:23:"Assign Combo to Student";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/assigncombo";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:40:56";s:8:"selected";b:1;}i:14;a:12:{s:7:"childid";s:2:"41";s:12:"childcaption";s:9:"House MGT";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/managehouse";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:28:59";s:8:"selected";b:1;}i:15;a:12:{s:7:"childid";s:2:"45";s:12:"childcaption";s:12:"Manage clubs";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/clubmanagement";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:2:"70";s:9:"timestamp";s:19:"2015-09-03 13:17:50";s:8:"selected";b:1;}}}}}', '2016-08-16 09:33:43'),
-('34377b0e4a53d88c0d3abb3b71ad4d43', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471334515, '', '2016-08-16 08:01:55'),
-('1346266ef7524720e2795db2295e563a', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471334604, '', '2016-08-16 08:03:24'),
-('594371c7e275ae527fee9b669d8dde3d', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471334605, '', '2016-08-16 08:03:25'),
-('c72d193cf3a3da19cc01ef82f1302576', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471334605, '', '2016-08-16 08:03:25'),
-('a10f55da3e89f25eec2b7fa180e85caa', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338192, '', '2016-08-16 09:03:12'),
-('bbc1d6db07dbe507bb73a2ca7d401136', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338195, '', '2016-08-16 09:03:15'),
-('fa5a955076924100f98b85b6b3c5ea78', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338196, '', '2016-08-16 09:03:16'),
-('d05d3186379fed5d6bfae6094405d4a8', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338217, '', '2016-08-16 09:03:37'),
-('51abed70bbc5e17970e24232052ac211', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338217, '', '2016-08-16 09:03:37'),
-('9e44efa54364f8f8acce416c869fc959', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338218, '', '2016-08-16 09:03:38'),
-('99a95f49d5827513d167c8876abbb1d9', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338225, '', '2016-08-16 09:03:45'),
-('4efdcf53120e930372abc98e609200d8', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338226, '', '2016-08-16 09:03:46'),
-('3c3dcf60b26385b52538370fd3516c5d', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338226, '', '2016-08-16 09:03:46'),
-('1a0a98c6296a570e2504da76e61a1e5e', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471338231, '', '2016-08-16 09:03:51'),
-('81ea8e2ae7099c8d266f8b798ce173b9', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339640, '', '2016-08-16 09:27:20'),
-('0383619b1d2b24dc873e3b7340325678', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339641, '', '2016-08-16 09:27:21'),
-('8d1f0f704e7a6f5849afb0a7301436de', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339641, '', '2016-08-16 09:27:21'),
-('ee2935018d5afeaa56cf17b39bce4eb5', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339646, '', '2016-08-16 09:27:26'),
-('a3bd572e2eb937730a908529f65bec05', '111.93.33.242', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339678, '', '2016-08-16 09:27:58'),
-('026edffddc0a1b32803628b6e9061024', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339679, '', '2016-08-16 09:27:59'),
-('fde0f8a8212a2349420990ef8ebd50f8', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339679, '', '2016-08-16 09:27:59'),
-('a62776c1ca9cf789cca1cebc4916c1e6', '220.225.233.153', 'Dalvik/1.6.0 (Linux; U; Android 4.1.2; GT-I8552 Build/JZO54K)', 1471339934, '', '2016-08-16 09:32:14'),
-('bce32f0ae3f0f0557492c8da772ace94', '54.162.26.248', 'runscope/0.1', 1471340118, '', '2016-08-16 09:35:18');
+('1bd29e8a7f08134947242055a7678ed4', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', 1489122193, 'a:16:{s:9:"user_data";s:0:"";s:9:"logintype";s:5:"STAFF";s:7:"user_id";s:1:"1";s:8:"database";s:51:"mysqli://root:root@localhost/skoolapp_merascho_demo";s:12:"deo_staff_id";i:-1;s:14:"deo_staff_name";s:2:"NA";s:8:"staff_id";s:1:"1";s:10:"staff_name";s:13:"Gaurav Rupani";s:11:"staff_desig";s:5:"ADMIN";s:11:"school_code";s:7:"TESTDB1";s:10:"brand_name";s:8:"skoolapp";s:10:"brand_logo";s:15:"files/myapp.png";s:21:"is_staff_classteacher";s:3:"YES";s:29:"staff_classteacher_section_id";s:2:"30";s:24:"staff_classteacher_class";s:3:"11B";s:9:"staffMenu";a:10:{i:0;a:4:{s:6:"menuid";s:1:"6";s:8:"menuname";s:9:"Dashboard";s:5:"class";s:7:"md-home";s:11:"childDetail";a:2:{i:0;a:12:{s:7:"childid";s:2:"38";s:12:"childcaption";s:5:"ADMIN";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"6";s:8:"page_url";s:30:"index.php/staff/admindashboard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-21 10:19:13";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"39";s:12:"childcaption";s:9:"Dashboard";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"6";s:8:"page_url";s:30:"index.php/staff/staffdashboard";s:9:"mandatory";s:0:"";s:7:"default";s:3:"YES";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-21 10:19:20";s:8:"selected";b:1;}}}i:1;a:4:{s:6:"menuid";s:1:"1";s:8:"menuname";s:7:"General";s:5:"class";s:9:"md-school";s:11:"childDetail";a:4:{i:0;a:12:{s:7:"childid";s:2:"14";s:12:"childcaption";s:18:"Attendance summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:28:"index.php/staff/attsummary\r\n";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 15:50:37";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"15";s:12:"childcaption";s:13:"Marks Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:25:"index.php/staff/bluesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:26:41";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"16";s:12:"childcaption";s:14:"Common Notices";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:28:"index.php/staff/noticemodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:27:07";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"17";s:12:"childcaption";s:15:"Today''s summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"1";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}}}i:2;a:4:{s:6:"menuid";s:1:"2";s:8:"menuname";s:9:"Academics";s:5:"class";s:7:"md-poll";s:11:"childDetail";a:9:{i:0;a:12:{s:7:"childid";s:2:"18";s:12:"childcaption";s:9:"My Events";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:24:"index.php/staff/myevents";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 18:30:29";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"19";s:12:"childcaption";s:11:"Marks entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:26:"index.php/staff/marksentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 16:36:53";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"20";s:12:"childcaption";s:18:"Student CR Remarks";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:30:"index.php/staff/remarkentrysub";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-03-28 15:20:01";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"21";s:12:"childcaption";s:15:"CCE Grade entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:29:"index.php/staff/ccegradeentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:54:05";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"23";s:12:"childcaption";s:11:"Cards entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:30:"index.php/staff/staffdashboard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-06-30 18:16:07";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"24";s:12:"childcaption";s:13:"Manage Events";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:27:"index.php/staff/manageevent";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 18:30:42";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"25";s:12:"childcaption";s:22:"Validate Class and CEE";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:28:"index.php/staff/gradesummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-03-28 15:23:54";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"44";s:12:"childcaption";s:22:"Send Message to Parent";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:34:"index.php/staff/staffparentmessage";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 14:23:29";s:8:"selected";b:0;}i:8;a:12:{s:7:"childid";s:2:"46";s:12:"childcaption";s:8:"My clubs";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"2";s:8:"page_url";s:25:"index.php/staff/addmember";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-03 13:30:59";s:8:"selected";b:1;}}}i:3;a:4:{s:6:"menuid";s:2:"23";s:8:"menuname";s:18:"Library Management";s:5:"class";s:9:"md-school";s:11:"childDetail";a:10:{i:0;a:12:{s:7:"childid";s:2:"52";s:12:"childcaption";s:11:"Books Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:24:"index.php/staff/addbooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 17:58:29";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"53";s:12:"childcaption";s:11:"Issue Books";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:26:"index.php/staff/issuebooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 17:59:46";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"54";s:12:"childcaption";s:12:"Return Books";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:27:"index.php/staff/returnbooks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:00:05";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"55";s:12:"childcaption";s:12:"Fine Setting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:27:"index.php/staff/finesetting";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:00:44";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"56";s:12:"childcaption";s:18:"Issued Book Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:31:"index.php/staff/issuebookreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:04:50";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"57";s:12:"childcaption";s:16:"Defaulter Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:31:"index.php/staff/defaulterreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:06:13";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"58";s:12:"childcaption";s:16:"Lost Book Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:30:"index.php/staff/lostbookreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:06:49";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"59";s:12:"childcaption";s:19:"Book Centric Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:33:"index.php/staff/bookcentricreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:07:33";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"60";s:12:"childcaption";s:22:"Student Centric Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:36:"index.php/staff/studentcentricreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:08:06";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"61";s:12:"childcaption";s:22:"Fine Collection Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"23";s:8:"page_url";s:30:"index.php/staff/finecollection";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:08:43";s:8:"selected";b:1;}}}i:4;a:4:{s:6:"menuid";s:2:"24";s:8:"menuname";s:20:"Transport Management";s:5:"class";s:17:"md-directions-bus";s:11:"childDetail";a:8:{i:0;a:12:{s:7:"childid";s:2:"62";s:12:"childcaption";s:9:"Bus Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:25:"index.php/staff/busmodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:12:24";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"63";s:12:"childcaption";s:8:"Bus Stop";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:23:"index.php/staff/busstop";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:15:52";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"64";s:12:"childcaption";s:12:"Driver Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:28:"index.php/staff/drivermodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:16:30";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"65";s:12:"childcaption";s:15:"Manage Bus Trip";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:29:"index.php/staff/managebustrip";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:17:28";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"66";s:12:"childcaption";s:17:"Manage Bus Driver";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:31:"index.php/staff/managebusdriver";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:18:11";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"67";s:12:"childcaption";s:18:"Manage Student-Bus";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:32:"index.php/staff/managestudentbus";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:19:20";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"68";s:12:"childcaption";s:17:"Transport Reports";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:30:"index.php/staff/generatereport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 16:20:09";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"69";s:12:"childcaption";s:14:"Bus Contractor";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"24";s:8:"page_url";s:27:"index.php/staff/buscontract";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:38:21";s:8:"selected";b:1;}}}i:5;a:4:{s:6:"menuid";s:2:"25";s:8:"menuname";s:14:"Time Table MGT";s:5:"class";s:16:"md-query-builder";s:11:"childDetail";a:5:{i:0;a:12:{s:7:"childid";s:2:"70";s:12:"childcaption";s:14:"Manage Periods";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:28:"index.php/staff/manageperiod";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:44:24";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"71";s:12:"childcaption";s:24:"Class Wise Class Teacher";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:34:"index.php/staff/classwisetimetable";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-11-23 12:44:35";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"72";s:12:"childcaption";s:21:"Substitute Time Table";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:35:"index.php/staff/substitutetimetable";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:45:52";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"73";s:12:"childcaption";s:22:"Working Hours Settings";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:28:"index.php/staff/workinghours";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:46:29";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"74";s:12:"childcaption";s:19:"Group Wise Settings";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"25";s:8:"page_url";s:33:"index.php/staff/groupwisesettings";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-27 18:47:06";s:8:"selected";b:1;}}}i:6;a:4:{s:6:"menuid";s:2:"26";s:8:"menuname";s:9:"Fees Mgmt";s:5:"class";s:15:"md-attach-money";s:11:"childDetail";a:5:{i:0;a:12:{s:7:"childid";s:2:"79";s:12:"childcaption";s:11:"Fee Setting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:27:"index.php/staff/headsetting";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-11-23 13:14:58";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"80";s:12:"childcaption";s:20:"Classwise Feesetting";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:24:"index.php/staff/classrel";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-11-23 13:06:02";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"81";s:12:"childcaption";s:19:"Installment Session";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:31:"index.php/staff/feesinstallment";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:32:58";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"82";s:12:"childcaption";s:13:"Fees Latefine";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:24:"index.php/staff/latefine";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:37:11";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"83";s:12:"childcaption";s:10:"Fees entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:2:"26";s:8:"page_url";s:32:"index.php/staff/studentfeesentry";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-14 12:37:40";s:8:"selected";b:1;}}}i:7;a:4:{s:6:"menuid";s:1:"3";s:8:"menuname";s:7:"Reports";s:5:"class";s:9:"md-report";s:11:"childDetail";a:11:{i:0;a:12:{s:7:"childid";s:2:"22";s:12:"childcaption";s:18:"Attendance Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:26:"index.php/staff/attsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 17:15:07";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"27";s:12:"childcaption";s:21:"Notes or Text parents";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:34:"index.php/staff/staffparentmessage";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-04-08 13:07:15";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"30";s:12:"childcaption";s:13:"Staff Profile";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"31";s:12:"childcaption";s:15:"Student Profile";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"37";s:12:"childcaption";s:17:"CCE Grade Summary";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:28:"index.php/staff/gradesummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:46:22";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"47";s:12:"childcaption";s:12:"House Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:27:"index.php/staff/housereport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:48:15";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"48";s:12:"childcaption";s:19:"Late Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:33:"index.php/staff/latestudentreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:49:47";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"49";s:12:"childcaption";s:21:"Absent Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:35:"index.php/staff/absentstudentreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:51:23";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"50";s:12:"childcaption";s:17:"Class List Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:31:"index.php/staff/classlistreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:52:43";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"51";s:12:"childcaption";s:16:"Card List Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:30:"index.php/staff/cardlistreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-09-04 09:53:34";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"85";s:12:"childcaption";s:14:"Student Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"3";s:8:"page_url";s:30:"index.php/staff/studentsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-22 10:42:32";s:8:"selected";b:1;}}}i:8;a:4:{s:6:"menuid";s:1:"4";s:8:"menuname";s:9:"What else";s:5:"class";s:9:"md-public";s:11:"childDetail";a:14:{i:0;a:12:{s:7:"childid";s:2:"26";s:12:"childcaption";s:8:"Send SMS";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/smsmodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 13:00:42";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:2:"28";s:12:"childcaption";s:13:"School Notice";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:28:"index.php/staff/noticemodule";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 16:22:53";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:2:"29";s:12:"childcaption";s:13:"Home Work MGT";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:24:"index.php/staff/homework";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2016-01-28 18:30:20";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:2:"32";s:12:"childcaption";s:16:"Attendance Entry";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:32:"index.php/staff/manageattendence";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 17:14:10";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:2:"33";s:12:"childcaption";s:18:"Student SQL Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/sqlreport";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-19 13:32:32";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:2:"34";s:12:"childcaption";s:15:"Homework Report";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:0:"";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-06-30 17:57:04";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:2:"35";s:12:"childcaption";s:9:"Bluesheet";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:25:"index.php/staff/bluesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:31:19";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"42";s:12:"childcaption";s:24:"Student Login Generation";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:28:"index.php/staff/genstudlogin";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:30:15";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:2:"43";s:12:"childcaption";s:24:"Teacher login Generation";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:29:"index.php/staff/genstafflogin";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:30:45";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"75";s:12:"childcaption";s:15:"Late attendance";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:30:"index.php/staff/lateattendance";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 10:45:27";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"76";s:12:"childcaption";s:23:"Declare Exam Date Sheet";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:29:"index.php/staff/examdatesheet";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2015-10-28 12:10:18";s:8:"selected";b:1;}i:11;a:12:{s:7:"childid";s:2:"77";s:12:"childcaption";s:11:"Report Card";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:26:"index.php/staff/reportcard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-05-05 18:49:53";s:8:"selected";b:1;}i:12;a:12:{s:7:"childid";s:2:"78";s:12:"childcaption";s:16:"Staff Attendance";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:24:"index.php/staff/staffatt";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-05-07 17:09:28";s:8:"selected";b:1;}i:13;a:12:{s:7:"childid";s:2:"84";s:12:"childcaption";s:17:"Id card genration";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"4";s:8:"page_url";s:22:"index.php/staff/idcard";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-18 13:01:52";s:8:"selected";b:1;}}}i:9;a:4:{s:6:"menuid";s:1:"5";s:8:"menuname";s:15:"Master Settings";s:5:"class";s:11:"md-keyboard";s:11:"childDetail";a:16:{i:0;a:12:{s:7:"childid";s:1:"1";s:12:"childcaption";s:18:"Student Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/studentsummary";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-29 18:49:51";s:8:"selected";b:1;}i:1;a:12:{s:7:"childid";s:1:"2";s:12:"childcaption";s:16:"Class Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/managesection";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"1";s:9:"timestamp";s:19:"2016-07-22 12:41:49";s:8:"selected";b:1;}i:2;a:12:{s:7:"childid";s:1:"3";s:12:"childcaption";s:18:"Subject Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/managesubject";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:16:55";s:8:"selected";b:1;}i:3;a:12:{s:7:"childid";s:1:"4";s:12:"childcaption";s:24:"Subject Combo Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/managecombourl";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:20:10";s:8:"selected";b:1;}i:4;a:12:{s:7:"childid";s:1:"5";s:12:"childcaption";s:15:"CCE List Master";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:23:"index.php/staff/ccelist";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:18:27";s:8:"selected";b:1;}i:5;a:12:{s:7:"childid";s:1:"6";s:12:"childcaption";s:47:"Declare exams (master FA,SA ,UT, Mid term etc.)";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:28:"index.php/staff/decalareexam";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 16:49:34";s:8:"selected";b:1;}i:6;a:12:{s:7:"childid";s:1:"7";s:12:"childcaption";s:23:"Publish and Lock Marks ";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:28:"index.php/staff/publishmarks";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 14:17:43";s:8:"selected";b:1;}i:7;a:12:{s:7:"childid";s:2:"40";s:12:"childcaption";s:21:"Holiday- Session days";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/holidayterm";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:27:36";s:8:"selected";b:1;}i:8;a:12:{s:7:"childid";s:1:"9";s:12:"childcaption";s:18:"Holiday Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:29:"index.php/staff/manageholiday";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:21:23";s:8:"selected";b:1;}i:9;a:12:{s:7:"childid";s:2:"10";s:12:"childcaption";s:16:"Staff Management";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/managestaff";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-07 14:33:39";s:8:"selected";b:1;}i:10;a:12:{s:7:"childid";s:2:"11";s:12:"childcaption";s:25:" Class teacher assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:34:"index.php/staff/manageclassteacher";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:17:14";s:8:"selected";b:1;}i:11;a:12:{s:7:"childid";s:2:"12";s:12:"childcaption";s:22:"CCE teacher Assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:32:"index.php/staff/assigncceelement";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:19:17";s:8:"selected";b:1;}i:12;a:12:{s:7:"childid";s:2:"13";s:12:"childcaption";s:26:"Subject teacher assignment";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/subjectteacher";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-11 19:18:11";s:8:"selected";b:1;}i:13;a:12:{s:7:"childid";s:2:"36";s:12:"childcaption";s:23:"Assign Combo to Student";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/assigncombo";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-13 14:40:56";s:8:"selected";b:1;}i:14;a:12:{s:7:"childid";s:2:"41";s:12:"childcaption";s:9:"House MGT";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:27:"index.php/staff/managehouse";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:1:"0";s:9:"timestamp";s:19:"2015-07-24 13:28:59";s:8:"selected";b:1;}i:15;a:12:{s:7:"childid";s:2:"45";s:12:"childcaption";s:12:"Manage clubs";s:11:"description";s:0:"";s:16:"tool_tip_content";s:0:"";s:8:"priority";s:1:"0";s:12:"main_menu_id";s:1:"5";s:8:"page_url";s:30:"index.php/staff/clubmanagement";s:9:"mandatory";s:0:"";s:7:"default";s:0:"";s:8:"entry_by";s:2:"70";s:9:"timestamp";s:19:"2015-09-03 13:17:50";s:8:"selected";b:1;}}}}}', '2017-03-10 05:03:33');
 
 -- --------------------------------------------------------
 
@@ -1407,7 +1380,7 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 --
 
 CREATE TABLE IF NOT EXISTS `company_staff_details` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `designation` varchar(255) NOT NULL,
   `email_address` varchar(255) NOT NULL,
@@ -1417,8 +1390,9 @@ CREATE TABLE IF NOT EXISTS `company_staff_details` (
   `admin_type` int(11) NOT NULL DEFAULT '0',
   `rm_id` int(11) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `company_staff_details`
@@ -1449,15 +1423,16 @@ INSERT INTO `company_staff_details` (`id`, `name`, `designation`, `email_address
 --
 
 CREATE TABLE IF NOT EXISTS `school_db_year_wise` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `school_code` varchar(255) NOT NULL,
   `db_name` varchar(255) NOT NULL,
   `start_year` varchar(255) NOT NULL,
   `end_year` varchar(255) NOT NULL,
   `order_by` varchar(255) NOT NULL,
   `current_db` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `school_db_year_wise`
@@ -1473,7 +1448,7 @@ INSERT INTO `school_db_year_wise` (`id`, `school_code`, `db_name`, `start_year`,
 --
 
 CREATE TABLE IF NOT EXISTS `school_list` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `school_code` varchar(20) NOT NULL,
   `school_name` varchar(100) NOT NULL,
   `school_pin` varchar(8) NOT NULL,
@@ -1484,8 +1459,10 @@ CREATE TABLE IF NOT EXISTS `school_list` (
   `brand_logo_path` varchar(255) NOT NULL,
   `master_password` varchar(255) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`),
+  KEY `school_code` (`school_code`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `school_list`
@@ -1501,7 +1478,7 @@ INSERT INTO `school_list` (`id`, `school_code`, `school_name`, `school_pin`, `sc
 --
 
 CREATE TABLE IF NOT EXISTS `system_users` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `staff_id` int(11) NOT NULL DEFAULT '-1',
   `usrname` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -1513,15 +1490,21 @@ CREATE TABLE IF NOT EXISTS `system_users` (
   `school_code` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `member_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `mobile_no` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=1325 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `id_2` (`id`),
+  KEY `school_code` (`school_code`),
+  KEY `staff_id` (`staff_id`),
+  KEY `mobile_no` (`mobile_no`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1327 ;
 
 --
 -- Dumping data for table `system_users`
 --
 
 INSERT INTO `system_users` (`id`, `staff_id`, `usrname`, `pass`, `login_activated`, `password_reset`, `register_date`, `email`, `regIP`, `school_code`, `member_type`, `mobile_no`, `timestamp`) VALUES
-(1, 1, 'demoadmin', 'demo123', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB1', 'STAFF', '9555960648', '0000-00-00 00:00:00'),
+(1, 1, 'demoadmin', 'demo123', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB1', 'STAFF', '9555960648', '2016-08-16 05:39:22'),
 (3, 2, '123652', '99999', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB1', 'STAFF', '', '0000-00-00 00:00:00'),
 (49, 3, 'manojrajput', '123456', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB1', 'COMPANY', '', '0000-00-00 00:00:00'),
 (50, 1, 'grupani', 'jaiho', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB1', 'COMPANY', '', '0000-00-00 00:00:00'),
@@ -2212,7 +2195,9 @@ INSERT INTO `system_users` (`id`, `staff_id`, `usrname`, `pass`, `login_activate
 (1321, -1, '55638897', '44081665', 'YES', 'NO', '2016-07-20 00:00:00', '', '', 'TESTDB1', 'PARENT', '', '0000-00-00 00:00:00'),
 (1322, -1, '15142668', '51484124', 'YES', 'NO', '2016-07-20 00:00:00', '', '', 'TESTDB1', 'PARENT', '', '0000-00-00 00:00:00'),
 (1323, -1, '92298469', '28331016', 'YES', 'NO', '2016-07-20 00:00:00', '', '', 'TESTDB1', 'PARENT', '', '0000-00-00 00:00:00'),
-(1324, 85, '11980662', '93790845', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB', 'STAFF', '', '0000-00-00 00:00:00');
+(1324, 85, '11980662', '93790845', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB', 'STAFF', '', '0000-00-00 00:00:00'),
+(1325, 108, '93253950', '73677172', 'YES', 'NO', '0000-00-00 00:00:00', '', '', 'TESTDB', 'STAFF', '', '0000-00-00 00:00:00'),
+(1326, -1, 'demostudent1', 'abc123', 'YES', 'NO', '2015-09-01 00:00:00', '', '', 'TESTDB1', 'PARENT', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2221,14 +2206,15 @@ INSERT INTO `system_users` (`id`, `staff_id`, `usrname`, `pass`, `login_activate
 --
 
 CREATE TABLE IF NOT EXISTS `test_bugs_remarks` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `module_id` int(11) NOT NULL,
   `remarks` varchar(500) NOT NULL,
   `screenshot_path` varchar(255) NOT NULL,
   `remarks_from` varchar(255) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `test_bugs_remarks`
@@ -2244,7 +2230,7 @@ INSERT INTO `test_bugs_remarks` (`id`, `module_id`, `remarks`, `screenshot_path`
 --
 
 CREATE TABLE IF NOT EXISTS `test_bug_details` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `module_id` int(11) NOT NULL,
   `description` varchar(5000) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -2258,8 +2244,9 @@ CREATE TABLE IF NOT EXISTS `test_bug_details` (
   `tester_comment` varchar(500) NOT NULL,
   `tester_timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=424 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=424 ;
 
 --
 -- Dumping data for table `test_bug_details`
@@ -2624,11 +2611,12 @@ INSERT INTO `test_bug_details` (`id`, `module_id`, `description`, `type`, `punch
 --
 
 CREATE TABLE IF NOT EXISTS `test_bug_type` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `type_name` varchar(255) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `test_bug_type`
@@ -2650,13 +2638,14 @@ INSERT INTO `test_bug_type` (`id`, `type_name`, `entry_by`, `timestamp`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `test_project_details` (
-  `id` bigint(11) unsigned NOT NULL,
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `project_incharge_id` int(11) NOT NULL,
   `description` varchar(500) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `test_project_details`
@@ -2698,15 +2687,16 @@ INSERT INTO `test_project_details` (`id`, `title`, `project_incharge_id`, `descr
 --
 
 CREATE TABLE IF NOT EXISTS `test_project_modules_details` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NOT NULL,
   `module_no` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `developer_id` int(11) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=95 ;
 
 --
 -- Dumping data for table `test_project_modules_details`
@@ -2810,7 +2800,7 @@ INSERT INTO `test_project_modules_details` (`id`, `project_id`, `module_no`, `ti
 --
 
 CREATE TABLE IF NOT EXISTS `user_login_logs` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `ip_info` varchar(255) NOT NULL,
   `system_info` varchar(255) NOT NULL,
@@ -2819,8 +2809,9 @@ CREATE TABLE IF NOT EXISTS `user_login_logs` (
   `model_name` varchar(255) NOT NULL,
   `login_person` varchar(255) NOT NULL DEFAULT 'USER',
   `login_person_id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM AUTO_INCREMENT=7137 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7488 ;
 
 --
 -- Dumping data for table `user_login_logs`
@@ -9349,7 +9340,359 @@ INSERT INTO `user_login_logs` (`id`, `user_id`, `ip_info`, `system_info`, `brows
 (7133, 1, '182.77.14.172', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', 'USER', -1, '2016-08-16 06:44:06'),
 (7134, 1, '182.77.14.172', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', 'USER', -1, '2016-08-16 06:48:52'),
 (7135, 1, '182.77.14.172', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', 'USER', -1, '2016-08-16 07:15:15'),
-(7136, 1, '111.93.33.242', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', 'USER', -1, '2016-08-16 07:57:32');
+(7136, 1, '111.93.33.242', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', 'USER', -1, '2016-08-16 07:57:32'),
+(7137, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 10:39:40'),
+(7138, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 11:16:01'),
+(7139, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 12:11:43'),
+(7140, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 12:12:01'),
+(7141, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36', '', '', 'USER', -1, '2016-08-16 12:15:40'),
+(7142, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 12:18:05'),
+(7143, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 12:30:08'),
+(7144, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-16 12:55:50'),
+(7145, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-17 04:26:48'),
+(7146, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-17 05:49:36'),
+(7147, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-17 07:30:51'),
+(7148, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-17 09:20:57'),
+(7149, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-17 11:57:56'),
+(7150, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 04:24:21'),
+(7151, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 05:21:30'),
+(7152, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36', '', '', 'USER', -1, '2016-08-19 05:59:31'),
+(7153, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 06:07:26'),
+(7154, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 06:17:41'),
+(7155, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 06:20:54'),
+(7156, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 06:41:49'),
+(7157, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 06:57:25'),
+(7158, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 09:11:55'),
+(7159, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 09:31:09'),
+(7160, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 09:38:08'),
+(7161, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 09:42:46'),
+(7162, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 11:36:41'),
+(7163, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-19 12:39:00'),
+(7164, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 03:59:42'),
+(7165, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 04:48:23'),
+(7166, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 04:49:11'),
+(7167, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 07:38:52'),
+(7168, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 11:16:36'),
+(7169, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 11:18:19'),
+(7170, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 11:19:30'),
+(7171, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 11:25:15'),
+(7172, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-22 11:34:48'),
+(7173, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 03:31:46'),
+(7174, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 04:18:35'),
+(7175, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 04:19:58'),
+(7176, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 09:56:25'),
+(7177, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 10:03:36'),
+(7178, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:11:43'),
+(7179, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:12:07'),
+(7180, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:12:19'),
+(7181, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:13:11'),
+(7182, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:13:31'),
+(7183, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:15:48'),
+(7184, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:16:53'),
+(7185, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:17:17'),
+(7186, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:18:29'),
+(7187, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 11:20:08'),
+(7188, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-23 12:28:09'),
+(7189, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 04:10:22'),
+(7190, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 04:48:25'),
+(7191, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 10:36:24'),
+(7192, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 10:52:39'),
+(7193, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 12:13:24'),
+(7194, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-24 12:32:13'),
+(7195, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-26 03:42:39'),
+(7196, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-26 07:08:04'),
+(7197, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-26 09:33:39'),
+(7198, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-26 10:40:09'),
+(7199, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-26 12:46:18'),
+(7200, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-29 04:25:56'),
+(7201, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36', '', '', 'USER', -1, '2016-08-29 05:39:25'),
+(7202, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-29 06:31:31'),
+(7203, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-29 09:27:46'),
+(7204, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-30 04:14:35'),
+(7205, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-30 06:04:29'),
+(7206, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-30 06:20:41'),
+(7207, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36', '', '', 'USER', -1, '2016-08-30 06:33:03'),
+(7208, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-31 05:32:38'),
+(7209, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-31 09:21:52'),
+(7210, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-08-31 12:31:49'),
+(7211, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 04:22:46'),
+(7212, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 04:57:37'),
+(7213, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 05:59:49'),
+(7214, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 07:37:04'),
+(7215, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 09:06:50'),
+(7216, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-01 11:51:54'),
+(7217, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 04:22:04'),
+(7218, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 04:51:28'),
+(7219, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 05:47:31'),
+(7220, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 06:08:32'),
+(7221, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 06:16:07'),
+(7222, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 06:54:50'),
+(7223, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 07:31:12'),
+(7224, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 07:55:34'),
+(7225, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:19:34'),
+(7226, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:21:58'),
+(7227, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:25:24'),
+(7228, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:28:53'),
+(7229, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:32:45'),
+(7230, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-02 10:59:06'),
+(7231, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 04:33:40'),
+(7232, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 09:47:57'),
+(7233, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 09:58:09'),
+(7234, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 10:01:24'),
+(7235, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 10:51:25'),
+(7236, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-05 11:52:19'),
+(7237, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 04:31:07'),
+(7238, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 07:54:34'),
+(7239, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 10:43:08'),
+(7240, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 11:33:42'),
+(7241, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 12:00:10'),
+(7242, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-06 12:37:11'),
+(7243, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-07 04:06:36'),
+(7244, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-07 04:13:01'),
+(7245, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-07 04:58:36'),
+(7246, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-07 12:16:14'),
+(7247, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-07 13:01:49'),
+(7248, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-09 04:51:44'),
+(7249, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-09 07:24:56'),
+(7250, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-09 11:18:31'),
+(7251, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-12 04:13:35'),
+(7252, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-12 10:10:28'),
+(7253, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-12 11:32:32'),
+(7254, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-12 11:46:24'),
+(7255, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-12 12:04:19'),
+(7256, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 04:08:57'),
+(7257, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 04:40:14'),
+(7258, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 05:45:57'),
+(7259, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 06:16:04'),
+(7260, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 07:19:16'),
+(7261, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 09:29:02'),
+(7262, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 10:18:15'),
+(7263, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 12:00:29'),
+(7264, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-13 12:01:46'),
+(7265, 54, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', 0, '2016-09-13 12:15:52'),
+(7266, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 04:15:42'),
+(7267, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 07:51:40'),
+(7268, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 07:57:44'),
+(7269, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 09:19:05'),
+(7270, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 09:30:48'),
+(7271, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 09:58:02'),
+(7272, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 12:18:17'),
+(7273, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 12:21:54'),
+(7274, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 12:43:26'),
+(7275, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-14 13:07:16'),
+(7276, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 04:17:44'),
+(7277, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 04:51:00'),
+(7278, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 06:30:41'),
+(7279, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 07:03:24'),
+(7280, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 07:09:57'),
+(7281, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 07:36:34'),
+(7282, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-15 10:50:34'),
+(7283, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 04:04:31'),
+(7284, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 06:06:07'),
+(7285, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 07:13:33'),
+(7286, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 07:56:30'),
+(7287, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 08:01:45'),
+(7288, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 08:11:01'),
+(7289, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 09:21:17'),
+(7290, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 09:24:48'),
+(7291, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 09:59:18'),
+(7292, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:03:46'),
+(7293, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:10:49'),
+(7294, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:17:09'),
+(7295, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:17:23'),
+(7296, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:19:39'),
+(7297, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 10:23:21'),
+(7298, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:19:41'),
+(7299, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:21:31'),
+(7300, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:30:36'),
+(7301, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:42:56'),
+(7302, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:45:51'),
+(7303, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:50:52'),
+(7304, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-16 11:57:37'),
+(7305, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 04:23:59'),
+(7306, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 05:27:35'),
+(7307, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 07:38:54'),
+(7308, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 08:05:26'),
+(7309, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 09:28:17'),
+(7310, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-19 13:06:06'),
+(7311, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 04:28:55'),
+(7312, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 04:58:37'),
+(7313, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 05:48:19'),
+(7314, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 08:00:27'),
+(7315, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 12:27:07'),
+(7316, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-20 13:03:45'),
+(7317, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 04:18:52'),
+(7318, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 05:07:21'),
+(7319, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 05:22:35'),
+(7320, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 07:04:13'),
+(7321, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 07:40:29'),
+(7322, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 07:47:08'),
+(7323, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 09:09:06'),
+(7324, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 10:38:58'),
+(7325, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-21 11:46:01'),
+(7326, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 04:26:30'),
+(7327, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 06:52:10'),
+(7328, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 07:09:26'),
+(7329, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 07:31:55'),
+(7330, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 07:52:09'),
+(7331, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 09:23:26'),
+(7332, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 09:37:41'),
+(7333, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 09:44:53'),
+(7334, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 09:53:42'),
+(7335, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-22 11:09:19'),
+(7336, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 04:13:13'),
+(7337, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 04:22:38'),
+(7338, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 04:32:24'),
+(7339, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 04:44:28'),
+(7340, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 05:03:02'),
+(7341, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 06:15:39'),
+(7342, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-23 11:08:51'),
+(7343, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-26 04:36:16'),
+(7344, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-26 07:50:06'),
+(7345, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-26 10:47:52'),
+(7346, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-26 13:00:26'),
+(7347, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 04:25:20'),
+(7348, 268, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 04:46:06'),
+(7349, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 05:23:47'),
+(7350, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 05:34:13'),
+(7351, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 07:03:40'),
+(7352, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-27 11:51:13'),
+(7353, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-28 04:30:44'),
+(7354, 800, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', 0, '2016-09-28 05:14:57'),
+(7355, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-28 05:27:42'),
+(7356, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-28 10:32:49'),
+(7357, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-29 04:12:05'),
+(7358, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-29 04:32:38'),
+(7359, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-29 09:42:05'),
+(7360, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-30 04:25:42'),
+(7361, 247, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-30 06:17:56'),
+(7362, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-30 06:19:17'),
+(7363, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-30 09:57:06'),
+(7364, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-09-30 10:20:34'),
+(7365, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-03 04:50:34'),
+(7366, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-03 12:16:57'),
+(7367, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-04 04:17:54'),
+(7368, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-07 06:11:40'),
+(7369, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-07 12:24:58'),
+(7370, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-10 05:21:49'),
+(7371, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-10 07:09:29'),
+(7372, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-13 04:49:41'),
+(7373, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-17 10:56:05'),
+(7374, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-10-28 07:21:15'),
+(7375, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-04 09:20:40'),
+(7376, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-04 09:43:10'),
+(7377, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-04 10:17:52'),
+(7378, 800, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', 0, '2016-11-04 12:56:17'),
+(7379, 800, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', 0, '2016-11-04 12:56:41'),
+(7380, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-04 13:13:20'),
+(7381, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-05 04:23:56'),
+(7382, 800, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', 0, '2016-11-05 04:58:09'),
+(7383, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-05 05:09:58'),
+(7384, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-05 07:30:20'),
+(7385, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-05 07:39:38'),
+(7386, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-05 08:01:28'),
+(7387, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-05 09:01:22'),
+(7388, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-05 10:13:11'),
+(7389, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 04:28:59'),
+(7390, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 04:32:58'),
+(7391, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 04:40:01'),
+(7392, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 06:11:19'),
+(7393, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 07:25:02'),
+(7394, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 09:36:26'),
+(7395, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 09:50:26'),
+(7396, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-09 09:56:20'),
+(7397, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-09 12:17:04'),
+(7398, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-09 12:35:18'),
+(7399, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-15 04:22:36'),
+(7400, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-15 04:58:46'),
+(7401, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-15 07:54:05'),
+(7402, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-15 09:05:31'),
+(7403, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-17 11:44:08'),
+(7404, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-18 11:05:04'),
+(7405, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-21 10:26:54'),
+(7406, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-22 04:45:24'),
+(7407, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-22 11:49:46'),
+(7408, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-22 12:18:50');
+INSERT INTO `user_login_logs` (`id`, `user_id`, `ip_info`, `system_info`, `browser_info`, `brand_name`, `model_name`, `login_person`, `login_person_id`, `timestamp`) VALUES
+(7409, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-23 04:55:41'),
+(7410, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-23 07:12:38'),
+(7411, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-23 10:35:47'),
+(7412, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-24 06:22:53'),
+(7413, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-24 09:10:57'),
+(7414, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-24 11:14:02'),
+(7415, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-25 04:16:27'),
+(7416, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-28 04:22:09'),
+(7417, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-28 04:24:02'),
+(7418, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-28 10:10:06'),
+(7419, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-28 10:11:30'),
+(7420, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-29 04:31:19'),
+(7421, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-29 06:04:08'),
+(7422, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-29 06:04:39'),
+(7423, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-11-29 10:07:32'),
+(7424, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-30 05:04:15'),
+(7425, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-11-30 09:12:56'),
+(7426, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-01 04:07:54'),
+(7427, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-12-01 05:15:07'),
+(7428, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-01 06:09:50'),
+(7429, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-12-01 09:37:36'),
+(7430, 1, '192.168.101.83', '', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', '', '', 'USER', -1, '2016-12-01 09:50:07'),
+(7431, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-01 10:03:08'),
+(7432, 1, '192.168.101.59', '', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', '', '', 'USER', -1, '2016-12-01 10:11:39'),
+(7433, 1, '192.168.101.59', '', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0', '', '', 'USER', -1, '2016-12-01 10:12:38'),
+(7434, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-01 10:29:34'),
+(7435, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-02 04:21:49'),
+(7436, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-02 10:48:13'),
+(7437, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-07 06:57:37'),
+(7438, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-12-07 07:27:42'),
+(7439, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-08 05:43:00'),
+(7440, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-08 05:51:53'),
+(7441, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-09 04:23:35'),
+(7442, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-09 05:37:24'),
+(7443, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-09 07:26:46'),
+(7444, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-09 09:12:30'),
+(7445, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-12 07:59:19'),
+(7446, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-12 12:17:50'),
+(7447, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-13 06:06:26'),
+(7448, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-14 06:50:19'),
+(7449, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-14 12:19:03'),
+(7450, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-15 04:11:06'),
+(7451, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-15 07:30:05'),
+(7452, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2016-12-20 12:14:11'),
+(7453, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2016-12-20 12:16:16'),
+(7454, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-05 06:02:43'),
+(7455, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-05 09:06:03'),
+(7456, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-05 09:47:43'),
+(7457, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-06 07:30:06'),
+(7458, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-18 10:05:10'),
+(7459, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-19 06:06:26'),
+(7460, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-24 13:01:43'),
+(7461, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-25 04:11:59'),
+(7462, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-25 04:57:10'),
+(7463, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-25 12:50:58'),
+(7464, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-27 05:10:46'),
+(7465, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-27 05:11:22'),
+(7466, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-27 05:28:20'),
+(7467, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-27 05:36:19'),
+(7468, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-27 10:01:40'),
+(7469, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-01-30 05:22:11'),
+(7470, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-30 05:26:23'),
+(7471, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-30 12:57:05'),
+(7472, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-01-31 04:27:57'),
+(7473, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-03 11:42:40'),
+(7474, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-06 05:11:57'),
+(7475, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-07 06:04:57'),
+(7476, 800, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', 0, '2017-02-07 06:36:18'),
+(7477, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-09 04:07:25'),
+(7478, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-11 06:22:31'),
+(7479, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-11 07:26:40'),
+(7480, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-13 17:19:07'),
+(7481, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-14 05:00:13'),
+(7482, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-14 09:00:43'),
+(7483, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-02-17 04:01:32'),
+(7484, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-02-21 17:29:11'),
+(7485, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-02-21 17:30:48'),
+(7486, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', '', '', 'USER', -1, '2017-02-25 10:29:24'),
+(7487, 1, '127.0.0.1', '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', '', '', 'USER', -1, '2017-03-10 05:03:33');
 
 -- --------------------------------------------------------
 
@@ -9358,14 +9701,15 @@ INSERT INTO `user_login_logs` (`id`, `user_id`, `ip_info`, `system_info`, `brows
 --
 
 CREATE TABLE IF NOT EXISTS `user_std_relation` (
-  `id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `adm_no` int(11) NOT NULL,
   `school_code` varchar(55) NOT NULL,
   `deo_entry_by` int(11) NOT NULL,
   `entry_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM AUTO_INCREMENT=1173 DEFAULT CHARSET=latin1;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1174 ;
 
 --
 -- Dumping data for table `user_std_relation`
@@ -10544,176 +10888,9 @@ INSERT INTO `user_std_relation` (`id`, `user_id`, `adm_no`, `school_code`, `deo_
 (1169, 1320, 12668, 'TESTDB1', 0, 0, '2016-07-20 03:12:59'),
 (1170, 1321, 12670, 'TESTDB1', 0, 0, '2016-07-20 03:12:59'),
 (1171, 1322, 12671, 'TESTDB1', 0, 0, '2016-07-20 03:12:59'),
-(1172, 1323, 13190, 'TESTDB1', 0, 0, '2016-07-20 03:12:59');
+(1172, 1323, 13190, 'TESTDB1', 0, 0, '2016-07-20 03:12:59'),
+(1173, 1, 1241, 'TESTDB1', 0, 0, '2017-02-03 13:09:24');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `acr_activity_master_list`
---
-ALTER TABLE `acr_activity_master_list`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `acr_designation`
---
-ALTER TABLE `acr_designation`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `app_device_list`
---
-ALTER TABLE `app_device_list`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `company_staff_details`
---
-ALTER TABLE `company_staff_details`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `school_db_year_wise`
---
-ALTER TABLE `school_db_year_wise`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `school_list`
---
-ALTER TABLE `school_list`
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `school_code` (`school_code`);
-
---
--- Indexes for table `system_users`
---
-ALTER TABLE `system_users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `id_2` (`id`),
-  ADD KEY `school_code` (`school_code`),
-  ADD KEY `staff_id` (`staff_id`),
-  ADD KEY `mobile_no` (`mobile_no`);
-
---
--- Indexes for table `test_bugs_remarks`
---
-ALTER TABLE `test_bugs_remarks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `test_bug_details`
---
-ALTER TABLE `test_bug_details`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `test_bug_type`
---
-ALTER TABLE `test_bug_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `test_project_details`
---
-ALTER TABLE `test_project_details`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `test_project_modules_details`
---
-ALTER TABLE `test_project_modules_details`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_login_logs`
---
-ALTER TABLE `user_login_logs`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `user_std_relation`
---
-ALTER TABLE `user_std_relation`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `acr_activity_master_list`
---
-ALTER TABLE `acr_activity_master_list`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `acr_designation`
---
-ALTER TABLE `acr_designation`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `app_device_list`
---
-ALTER TABLE `app_device_list`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `company_staff_details`
---
-ALTER TABLE `company_staff_details`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `school_db_year_wise`
---
-ALTER TABLE `school_db_year_wise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
---
--- AUTO_INCREMENT for table `school_list`
---
-ALTER TABLE `school_list`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `system_users`
---
-ALTER TABLE `system_users`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1325;
---
--- AUTO_INCREMENT for table `test_bugs_remarks`
---
-ALTER TABLE `test_bugs_remarks`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `test_bug_details`
---
-ALTER TABLE `test_bug_details`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=424;
---
--- AUTO_INCREMENT for table `test_bug_type`
---
-ALTER TABLE `test_bug_type`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `test_project_details`
---
-ALTER TABLE `test_project_details`
-  MODIFY `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `test_project_modules_details`
---
-ALTER TABLE `test_project_modules_details`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
---
--- AUTO_INCREMENT for table `user_login_logs`
---
-ALTER TABLE `user_login_logs`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7137;
---
--- AUTO_INCREMENT for table `user_std_relation`
---
-ALTER TABLE `user_std_relation`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1173;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

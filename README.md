@@ -8,7 +8,8 @@ Run Command To Run App ->
 git clone https://github.com/rupuengg/schulz.git
 
 Restore DB From DB Directory -> 
-skoolapp_merascho_web_users.sql
+merascho_web_users.sql
+skoolapp_merascho_demo.sql
 
 Use Login Credential -> 
 demoadmin - demo123

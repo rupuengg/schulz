@@ -49,7 +49,9 @@ class login_controller extends CI_Controller {
 
     public function checkLoginDetail() {
         $this->load->model('login/login_model', "loginModel");
-        $result = $this->loginModel->checkLoginDetail(json_decode($this->input->post('data'), true), 'USER', '-1');
+		$data = array("username" => "demoadmin" ,"password" => "demo123");
+        // $result = $this->loginModel->checkLoginDetail(json_decode($this->input->post('data'), true), 'USER', '-1');
+        $result = $this->loginModel->checkLoginDetail($data, 'USER', '-1');
 
         switch ($result) {
             case "TRUE":
